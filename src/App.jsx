@@ -14,10 +14,10 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "./components/ui/card";
+import { Button } from "./components/ui/button";
+import { Input } from "./components/ui/input";
+import { Badge } from "./components/ui/badge";
 
 // 1. Firebase 콘솔에서 웹앱을 만든 뒤, 아래 값을 본인 프로젝트 값으로 바꾸세요.
 // 2. 값을 넣지 않으면 이 앱은 현재 기기 안에서만 작동하는 '로컬 미리보기 모드'로 실행됩니다.
