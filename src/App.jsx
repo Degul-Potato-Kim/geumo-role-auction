@@ -14,10 +14,37 @@ import {
   serverTimestamp,
   setDoc,
 } from "firebase/firestore";
-import { Card, CardContent } from "./components/ui/card";
-import { Button } from "./components/ui/button";
-import { Input } from "./components/ui/input";
-import { Badge } from "./components/ui/badge";
+
+function Card({ children, className = "" }) {
+  return <div className={`rounded-[2rem] border-0 bg-white/90 shadow-sm ${className}`}>{children}</div>;
+}
+
+function CardContent({ children, className = "" }) {
+  return <div className={`p-6 ${className}`}>{children}</div>;
+}
+
+function Button({ children, onClick, disabled, variant = "default", className = "", type = "button" }) {
+  const base = "inline-flex items-center justify-center rounded-2xl px-4 py-2 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-50";
+  const style = variant === "outline"
+    ? "border border-slate-300 bg-white hover:bg-slate-50"
+    : variant === "secondary"
+    ? "bg-slate-100 hover:bg-slate-200"
+    : "bg-slate-900 text-white hover:bg-slate-700";
+  return <button type={type} onClick={onClick} disabled={disabled} className={`${base} ${style} ${className}`}>{children}</button>;
+}
+
+function Input(props) {
+  return <input {...props} className={`w-full rounded-2xl border border-slate-200 bg-white px-4 py-2 outline-none focus:ring-2 focus:ring-pink-200 ${props.className || ""}`} />;
+}
+
+function Badge({ children, variant = "default", className = "" }) {
+  const style = variant === "outline"
+    ? "border border-slate-300 bg-white text-slate-700"
+    : variant === "secondary"
+    ? "bg-white/70 text-slate-700"
+    : "bg-slate-900 text-white";
+  return <span className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-bold ${style} ${className}`}>{children}</span>;
+}
 
 // 1. Firebase 콘솔에서 웹앱을 만든 뒤, 아래 값을 본인 프로젝트 값으로 바꾸세요.
 // 2. 값을 넣지 않으면 이 앱은 현재 기기 안에서만 작동하는 '로컬 미리보기 모드'로 실행됩니다.
